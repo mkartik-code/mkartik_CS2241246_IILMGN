@@ -1,1 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Phishing Website Detection</title>
+</head>
 
+<body class="bg-gradient-to-r from-indigo-500 to-purple-600 min-h-screen flex items-center justify-center">
+
+  <div class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md text-center">
+
+    <!-- Icon -->
+    <div class="text-5xl mb-4">🔐</div>
+
+    <!-- Title -->
+    <h1 class="text-2xl font-bold mb-2">Phishing Website Detection</h1>
+
+    <!-- Subtitle -->
+    <p class="text-gray-500 text-sm mb-6">
+      Detect whether a website is safe or phishing using Machine Learning
+    </p>
+
+    <!-- Result -->
+    {% if predict %}
+      <div class="mb-4 px-4 py-2 rounded-lg font-semibold
+        {% if 'Phishing' in predict %} bg-red-100 text-red-700 
+        {% else %} bg-green-100 text-green-700 {% endif %}">
+        {{ predict }}
+      </div>
+    {% endif %}
+
+    <!-- Form -->
+    <form method="POST" action="/" class="flex flex-col gap-4">
+
+      <input 
+        type="url" 
+        name="url" 
+        placeholder="https://example.com"
+        required
+        class="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+      >
+
+      <button 
+        type="submit"
+        class="bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 hover:scale-105 transition">
+        Detect
+      </button>
+
+    </form>
+
+    <!-- Footer Note -->
+    <p class="text-xs text-gray-400 mt-6">
+      Powered by NLP & Machine Learning
+    </p>
+
+  </div>
+
+</body>
+</html>
